@@ -6,7 +6,7 @@ const SideNavbar = ({category,setCategory}) => {
 const categories = ["horror", "thriller", "fantasy", "romance", "manga"];
   
   return (
-
+          
        <div className=' hidden md:block  fixed top-0 left-0 z-50   h-full w-[18%] bg-white px-5 pt-10'>
                   <div className='font-semibold' >
                     My Book Store   
@@ -21,7 +21,7 @@ const categories = ["horror", "thriller", "fantasy", "romance", "manga"];
                   <span
                     key={idx}
                      onClick={()=>setCategory(cat)}
-                    className={`px-3 border text-xs hover:scale-105 font-semibold bg-gray-100 ${category ===cat ?"bg-blue-600 text-white":"bg-white text-gray-700 hover:bg-blue-400 hover:text-white"}    py-1  rounded-2xl cursor-pointer`}
+                    className={`px-3 border text-xs hover:scale-105 font-semibold bg-blue-600 ${category ===cat ?"bg-blue-600 text-white":"bg-white text-gray-700 hover:bg-blue-400 hover:text-white"}    py-1  rounded-2xl cursor-pointer`}
                   >
                     {cat}
                   </span>

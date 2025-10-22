@@ -1,20 +1,24 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
  
-   export const fetchBooks = createAsyncThunk("books/fetchBooks", async (quiry ='thriller') => {
-  const response = await axios.get(
-  `  https://openlibrary.org/subjects/${quiry}.json?limit=20`
-
-  );
+   export const fetchBooks = createAsyncThunk("books/fetchBooks", async ( {type = "category", value = 'horror'}) => {
+    let url;
+    if(type==='category'){
+        url =`  https://openlibrary.org/subjects/${value}.json?limit=20`
+    }
+    else if(type==="search"){
+         url = `https://openlibrary.org/search.json?q=${value}&limit=20`;
+    }
+  const response = await axios.get(url);
   console.log(response.data.works)
-  return response.data.works;
+  return type ==="category"? response.data.works :response.data.docs;
 });
 
  const BookSlice =createSlice({
        name:'books',
        initialState:{
         items:[],
-        status:'loading',
+        status:'idle',
         error:null,
        },
        reducers:{ },
